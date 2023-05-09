@@ -1,5 +1,7 @@
 # Falco Demo
 
+![Falco](./images/falco-logo.png)
+
 This is a demo of setting up and showcasing some of the capabilities of Falco for runtime threat detection.
 
 ## devcontainer
