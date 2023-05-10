@@ -8,23 +8,21 @@ This is a demo of setting up and showcasing some of the capabilities of Falco fo
 
 This demo shows how to use Kyverno to enforce policies on Kubernetes resources. You can use the devcontainer following this repo. The devcontainer has all the tools installed to run the demo. 
 
-## Setting up the demo without the devcontainer
-
-First, you will need to have _kind_ installed. You can find instructions on how to install _kind_ [here](https://kind.sigs.k8s.io/docs/user/quick-start/).
-
 ## Create a cluster
 
-To create a cluster, run the following command:
+There are some secrets and setups needed to get this repo going.
 
-```bash
-kind create cluster --name falco-demo
-```
+1. Clone/Fork this repo
+2. Create an RG in Azure and note down the name
+3. Create a GitHub secret holding an Azure Service Principal following this guide: <https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md> giving it access to the RG in step 2.
+
+Create GH Action secrets with the following values:
+
+- AZURE_CREDENTIALS
+- AZURE_SUBSCRIPTION_ID
+- AZURE_TENANT_ID
 
 ## Get the kubeconfig
-
-```bash
-kind get kubeconfig --name falco-demo > ~/.kube/config
-```
 
 ## Install Falco using Helm
 

@@ -10,5 +10,4 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
 # COPY library-scripts/github-debian.sh /tmp/library-scripts/
 # && bash /tmp/library-scripts/github-debian.sh
-RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.41.0
 RUN apt-get update && apt-get install -y bash-completion vim
