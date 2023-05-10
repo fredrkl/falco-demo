@@ -27,3 +27,26 @@ Create GH Action secrets with the following values:
 ## Install Falco using Helm
 
 Following the instructions [here](https://falco.org/docs/getting-started/try-falco/try-falco-on-kubernetes/) to install Falco using Helm.
+
+```bash
+helm repo add falcosecurity https://falcosecurity.github.io/charts
+helm repo update
+helm search repo falcosecurity
+```
+
+Shows us the following:
+
+```bash
+NAME                            CHART VERSION   APP VERSION     DESCRIPTION
+falcosecurity/event-generator   0.2.0           0.10.0          A Helm chart used to deploy the event-generator...
+falcosecurity/falco             3.1.4           0.34.1          Falco
+falcosecurity/falco-exporter    0.9.3           0.8.2           Prometheus Metrics Exporter for Falco output ev...
+falcosecurity/falcosidekick     0.6.1           2.27.0          Connect Falco to your ecosystem
+```
+
+Then we install Falco:
+
+```bash
+kubectl create namespace falco
+helm install falco -n falco --set tty=true falcosecurity/falco
+```
