@@ -44,9 +44,19 @@ falcosecurity/falco-exporter    0.9.3           0.8.2           Prometheus Metri
 falcosecurity/falcosidekick     0.6.1           2.27.0          Connect Falco to your ecosystem
 ```
 
-Then we install Falco:
+Then we install Falco with the sidekick ui:
 
 ```bash
 kubectl create namespace falco
-helm install falco -n falco --set tty=true falcosecurity/falco
+helm install falco -n falco --set tty=true --set falcosidekick.enabled=true --set falcosidekick.webui.enabled=true falcosecurity/falco
 ```
+
+generate a suspicous event:
+
+```bash
+kubectl run event-generator -n falco --image falcosecurity/event-generator \
+  -- run syscall --loop
+```
+
+We can see the event in the Falco UI:
+![Falco sidekick ui](./images/falco-sidekick-ui.png)
